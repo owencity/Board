@@ -1,5 +1,8 @@
 package kr.board.mapper;
 
-public interface BoardMapper {
+import java.util.List;
+import kr.board.entity.Board;
 
+public interface BoardMapper {
+	List<Board> getLists(); 
 }
