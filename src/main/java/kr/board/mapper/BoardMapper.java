@@ -8,5 +8,6 @@ import kr.board.entity.Board;
 
 @Mapper
 public interface BoardMapper {
-	List<Board> getLists(); 
+	public List<Board> getLists(); 
+	public void boardInsert(Board vo);
 }

@@ -14,7 +14,7 @@
 <body>
  
 <div class="container">
-  <h2>K 쇼핑몰</h2>
+  <h2>K중고마켓</h2>
   <div class="panel panel-default">
     <div class="panel-heading">상품목록</div>
     <div class="panel-body">
@@ -33,11 +33,13 @@
     	<td>${vo.writer}</td>
     	<td>${vo.indate}</td>
     	<td>${vo.count}</td>
-    </tr>
-    </c:forEach>
+    	</tr>
+     </c:forEach>
     </table>
+    <a href="boardForm.do" class="btn btn-primary btn-sm">상품 등록</a>
+    
     </div>
-    <div class="panel-footer">Regacy_Project</div>
+    <div class="panel-footer">K중고마켓</div>
   </div>
 </div>
 

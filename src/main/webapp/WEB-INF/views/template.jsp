@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-   <%@taglib prefic="c" uri="http://java.sun.com/jsp/jstl/core" %>
+   <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,11 +14,11 @@
 <body>
  
 <div class="container">
-  <h2>Spring MVC</h2>
+  <h2>제목</h2>
   <div class="panel panel-default">
     <div class="panel-heading">Board</div>
     <div class="panel-body">Panel Content</div>
-    <div class="panel-footer">Regacy_Project</div>
+    <div class="panel-footer">중고마켓</div>
   </div>
 </div>
 
