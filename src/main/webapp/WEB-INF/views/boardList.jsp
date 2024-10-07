@@ -14,9 +14,9 @@
 <body>
  
 <div class="container">
-  <h2>Spring MVC</h2>
+  <h2>K 쇼핑몰</h2>
   <div class="panel panel-default">
-    <div class="panel-heading">Board</div>
+    <div class="panel-heading">상품목록</div>
     <div class="panel-body">
     <table class="table table-bordered table-hover">
     <tr>
