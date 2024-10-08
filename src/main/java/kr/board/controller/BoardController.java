@@ -55,4 +55,17 @@ public class BoardController {
 		mapper.boardDelete(id);
 		return "redirect:/boardList.do";
 	}
+	
+	@GetMapping("/boardUpdateForm.do/{id}")
+	public String boardUpdateForm(@PathVariable("id") int id, Model model) {
+		Board vo = mapper.boardContent(id);
+		model.addAttribute("vo", vo);
+		return "boardUpdate"; 
+	}
+	
+	@PostMapping("/boardUpdate.do")
+	public String boardUpdate(Board vo) {
+		mapper.boardUpdate(vo);
+		return "redirect:/boardList.do";
+	}
 }

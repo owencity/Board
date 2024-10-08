@@ -40,7 +40,7 @@
     </tr>  
     <tr>
     	<td colspan="2" align="center">
-    		<a class="btn btn-primary btn-sm">수정화면</a>
+    		<a href="boardUpdateForm.do/${vo.id}" class="btn btn-primary btn-sm">수정화면</a>
    			<a href="boardDelete.do/${vo.id}" class="btn btn-warning btn-sm">삭제</a>
    			<a href="boardList.do" class="btn btn-info btn-sm">목록</a>
     </tr>
