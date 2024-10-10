@@ -28,4 +28,10 @@ public class BoardController {
 		List<Board> list = boardmapper.getLists();
 		return list; 
 	}
+	
+	@RequestMapping("/boardInsert.do")
+	@ResponseBody 
+	public void boardInsert(Board vo) {
+		boardmapper.boardInsert(vo);
+	}
 }
