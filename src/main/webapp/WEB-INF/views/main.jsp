@@ -19,7 +19,7 @@
   	// 리스트가져오기 
   	function loadList() {
   		$.ajax({
-  			url : "boardList.do",
+  			url : "/board/getList",
   			type : "get",
   			dataType : "json",
   			success : makeView,
@@ -92,7 +92,7 @@
 		
 		var fData = $("#frm").serialize();
   		$.ajax({
-  			url : "boardInsert.do",
+  			url : "/board/saveboard",
   			type : "post",
   			data : fData,
   			success : loadList,
@@ -112,7 +112,7 @@
   	function goContent(id) {
   		if($("#c"+id).css("display")=="none") {
   			$.ajax({
-  				url : "boardContent.do",
+  				url : "/board/showcontent",
   				type : "get",
   				data : {"id" : id},
   				dataType : "json",
@@ -130,7 +130,7 @@
   		else {
   			$("#c"+id).css("display", "none");
   			$.ajax({
-  				url : "boardCount.do",
+  				url : "/board/count",
   				type : "get",
   				data : {"id" : id},
   				dataType : "json",
@@ -144,7 +144,7 @@
   	}
   	function goDelete(id){
   		$.ajax( {
-  			url : "boardDelete.do",
+  			url : "/board/deleteboard",
   			type : "get",
   			data : {"id":id},
   			success : loadList,
@@ -167,7 +167,7 @@
   		var title=$("#nt"+id).val();
   		var content=$("#ta"+id).val();
   		$.ajax({
-  			url : "boardUpdate.do",
+  			url : "/board/updateboard",
   			type : "post",
   			data : {"id" : id, "title" : title, "content" : content},
   			success : loadList,
