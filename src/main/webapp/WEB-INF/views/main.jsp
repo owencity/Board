@@ -19,7 +19,7 @@
   	// 리스트가져오기 
   	function loadList() {
   		$.ajax({
-  			url : "/board/getList",
+  			url : "board/getlist",
   			type : "get",
   			dataType : "json",
   			success : makeView,
@@ -92,7 +92,7 @@
 		
 		var fData = $("#frm").serialize();
   		$.ajax({
-  			url : "/board/saveboard",
+  			url : "board/saveboard",
   			type : "post",
   			data : fData,
   			success : loadList,
@@ -112,9 +112,8 @@
   	function goContent(id) {
   		if($("#c"+id).css("display")=="none") {
   			$.ajax({
-  				url : "/board/showcontent",
+  				url : "board/showcontent/" + id,
   				type : "get",
-  				data : {"id" : id},
   				dataType : "json",
   				success : function(data) {
   					$("#ta" + id).val(data.content);
@@ -130,9 +129,8 @@
   		else {
   			$("#c"+id).css("display", "none");
   			$.ajax({
-  				url : "/board/count",
+  				url : "board/count/" + id,
   				type : "get",
-  				data : {"id" : id},
   				dataType : "json",
   				success : function(data) {
   					$("#cnt"+id).text(data.count);
@@ -144,9 +142,8 @@
   	}
   	function goDelete(id){
   		$.ajax( {
-  			url : "/board/deleteboard",
-  			type : "get",
-  			data : {"id":id},
+  			url : "board/deleteboard/" + id,
+  			type : "delete",
   			success : loadList,
   			error : function() {
   				alert("error");
@@ -167,8 +164,8 @@
   		var title=$("#nt"+id).val();
   		var content=$("#ta"+id).val();
   		$.ajax({
-  			url : "/board/updateboard",
-  			type : "post",
+  			url : "board/updateboard",
+  			type : "put",
   			data : {"id" : id, "title" : title, "content" : content},
   			success : loadList,
   			error : function() { alert("error")}

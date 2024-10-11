@@ -3,12 +3,11 @@ package kr.board.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import kr.board.entity.Board;
@@ -20,11 +19,6 @@ public class RestBoardController {
 	
 	@Autowired
 	BoardMapper boardmapper;
-	
-	@RequestMapping("/")
-	public String main() {
-		return "main";
-	}
 	
 	@GetMapping("/getlist")
 	public List<Board> boardList() {
@@ -38,23 +32,23 @@ public class RestBoardController {
 	}
 	
 	@GetMapping("/deleteboard/{id}")
-	public void boardDelete(@RequestParam("id") int id) {
+	public void boardDelete(@PathVariable("id") int id) {
 		boardmapper.boardDelete(id);
 	}
 	
-	@PostMapping("/updateboard")
+	@PutMapping("/updateboard")
 	public void boardUpdate(Board vo) {
 		boardmapper.boardUpdate(vo);
 	}
 	
 	@GetMapping("/showcontent/{id}")
-	public Board boardContent(int id) {
+	public Board boardContent(@PathVariable("id") int id) {
 		Board vo = boardmapper.boardContent(id);
 		return vo;
 	}
 	
 	@GetMapping("/count/{id}")
-	public Board boardCount(int id) {
+	public Board boardCount(@PathVariable("id") int id) {
 	 boardmapper.boardCount(id);
 	 Board vo = boardmapper.boardContent(id);
 	 return vo;
