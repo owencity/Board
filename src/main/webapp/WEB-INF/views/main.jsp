@@ -42,11 +42,22 @@
 		$.each(data, function(index,obj){ 
 			listHtml += "<tr>";
 	  		listHtml +="<td>"+obj.id+"</td>";
-	  		listHtml +="<td>"+obj.title+"</td>";
+	  		listHtml +="<td id='t"+obj.id+"'><a href='javascript:goContent("+obj.id+")'>"+obj.title+"</a></td>";
 	  		listHtml +="<td>"+obj.writer+"</td>";
 	  		listHtml +="<td>"+obj.indate+"</td>";
-	  		listHtml +="<td>"+obj.count+"</td>";
+	  		listHtml +="<td id = 'cnt"+obj.id+"'>"+obj.count+"</td>";
 			listHtml +="</tr>";
+			
+			listHtml += "<tr id='c" + obj.id + "' style='display:none'>";
+			listHtml += "<td>내용</td>";
+			listHtml += "<td colspan='4'>";
+			listHtml += "<textarea id='ta"+obj.id+"' readonly rows='7' class= 'form-control'></textarea>";
+			listHtml += "<br/>";
+			listHtml += "<span id='ub"+obj.id+"'><button class='btn btn-success btn-sm' onclick='goUpdateForm("+obj.id+")'>수정화면</button></span>&nbsp;";
+			listHtml += "<button class='btn btn-warning btn-sm' onclick='goDelete("+obj.id+")'>삭제</button>";
+			listHtml += "</td>";
+			listHtml += "</tr>";
+			listHtml += "</tr>";
 		});
 		
 		listHtml += "<tr>"
@@ -90,9 +101,78 @@
 			}
   		});
   		// 폼 초기화
-  		$("#title").val("");
+/*   		$("#title").val("");
   		$("#content").val("");
-  		$("#writer").val("");
+  		$("#writer").val(""); */
+  		
+  		$("#fclear").trigger("click");
+  	}
+  	
+  	// 상세내용 펼치기
+  	function goContent(id) {
+  		if($("#c"+id).css("display")=="none") {
+  			$.ajax({
+  				url : "boardContent.do",
+  				type : "get",
+  				data : {"id" : id},
+  				dataType : "json",
+  				success : function(data) {
+  					$("#ta" + id).val(data.content);
+  				},
+  				error : function() {
+  					alert("Error")
+  				}
+  			})
+  			
+  			$("#c"+id).css("display", "table-row");
+  			$("#ta"+id).attr("readonly", true);
+  		}
+  		else {
+  			$("#c"+id).css("display", "none");
+  			$.ajax({
+  				url : "boardCount.do",
+  				type : "get",
+  				data : {"id" : id},
+  				dataType : "json",
+  				success : function(data) {
+  					$("#cnt"+id).text(data.count);
+  				},
+  				error : function() { alert ("error");}
+  			
+  			});
+  		}
+  	}
+  	function goDelete(id){
+  		$.ajax( {
+  			url : "boardDelete.do",
+  			type : "get",
+  			data : {"id":id},
+  			success : loadList,
+  			error : function() {
+  				alert("error");
+  			}
+  		});
+  	}
+  	function goUpdateForm(id) {
+  		$("#ta"+id).attr("readonly", false);
+  		var title=$("#t" + id).text();
+  		var newInput = "<input type='text' id='nt"+id+"' class='form-control'/ value='"+title+"'/>";
+  		
+  		$("#t"+id).html(newInput);
+  		
+  		var newButton = "<button class='btn btn-info btn-sm' onclick='goUpdate("+id+")'>수정</button>";
+  		$("#ub" + id).html(newButton); 
+  	}
+  	function goUpdate(id) {
+  		var title=$("#nt"+id).val();
+  		var content=$("#ta"+id).val();
+  		$.ajax({
+  			url : "boardUpdate.do",
+  			type : "post",
+  			data : {"id" : id, "title" : title, "content" : content},
+  			success : loadList,
+  			error : function() { alert("error")}
+  		});
   	}
   </script>
 </head>
@@ -103,7 +183,7 @@
   <div class="panel panel-default">
     <div class="panel-heading">상품목록</div>
     <div class="panel-body" id="view"></div>
-    <div class="panle-body" id="wform" style="display: none">
+    <div class="panel-body" id="wform" style="display: none">
     <form id="frm">
 	<table class="table">
 		<tr>
@@ -124,7 +204,7 @@
 		<tr>
 			<td colspan="2" align="center">
 				<button type="button" 	class="btn btn-success btn-sm" onclick="goInsert()">등록</button>
-				<button type="reset" 	class="btn btn-warning btn-sm">취소</button>
+				<button type="reset" 	class="btn btn-warning btn-sm" id="fclear">취소</button>
 				<button type="button" 	class="btn btn-info btn-sm" onclick="goList()">목록가기</button>
 			</td>
 		</tr>
