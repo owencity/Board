@@ -18,9 +18,9 @@ public class BoardController {
 	@Autowired
 	BoardMapper boardmapper;
 	
-	@RequestMapping("/")
+	@RequestMapping("/boardMain.do")
 	public String main() {
-		return "main";
+		return "board/main";
 	}
 	
 	@RequestMapping("/boardList.do")

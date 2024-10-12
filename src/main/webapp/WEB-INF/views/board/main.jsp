@@ -174,7 +174,7 @@
   </script>
 </head>
 <body>
- 
+<jsp:include page="../common/header.jsp"/>
 <div class="container">
   <h2>K중고마켓</h2>
   <div class="panel panel-default">
