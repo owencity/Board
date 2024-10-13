@@ -4,7 +4,7 @@
 
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
-    <div class="navbar-header">
+    <div class="navbar-header">xx`
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -26,10 +26,22 @@
         <li><a href="#">공지사항</a></li>
         <li><a href="boardMain.do">상품목록</a></li>
       </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-      </ul>
+      <c:if test="${empty mvo}">
+	      <ul class="nav navbar-nav navbar-right">
+	        <li><a href="${contextPath}/memJoin.do"><span class="glyphicon glyphicon-user" ></span>회원가입</a></li>
+	        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span>로그인</a></li>
+	      </ul>
+      </c:if>
+      <c:if test="${!empty mvo}">
+	      <ul class="nav navbar-nav navbar-right">
+	        <li><a href="#"><span class="glyphicon glyphicon-user"></span>회원관리</a></li>
+	        <li><a href="#"><span class="glyphicon glyphicon-user"></span>회원정보수정</a></li>
+	        <li><a href="#"><span class="glyphicon glyphicon-user"></span>프로필사진수정</a></li>
+	        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span>로그아웃</a></li>
+	      </ul>
+      </c:if>
+      
+   
     </div>
   </div>
 </nav>
