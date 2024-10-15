@@ -4,6 +4,10 @@
 <select id="registerCheck" resultType="kr.board.entity.Member">
 select * from mem_tb1 where memId = #{memId}
 </select>
-
+<insert id="register" parameterType="kr.board.entity.Member">
+insert into 
+	mem_tb1(memId, memPassword, memName, memAge, memGender, memEamil, memProfile) 
+		values (#{memUserid}, #{memPassoword} , #{memName}, #{memAge}, #{memGender}, #{memEmail}, #{memProfile})
+</insert>
 </mapper>
 

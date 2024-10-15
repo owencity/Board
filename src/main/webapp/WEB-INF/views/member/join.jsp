@@ -35,6 +35,15 @@
 				}
 			});	
 		}
+	function passwordCheck() {
+		var memPassword1 = $("#memPassword1").val();
+		var memPassword2 = $("#memPassword2").val();
+		if(memPassword1 != memPassword2){ 
+			$("#passMessage").html("비밀번호가 서로 일치하지 않습니다.")
+		}else {
+			$("#passMessage").html("");
+		}
+	}
 	</script>
 
 </head>
@@ -48,6 +57,7 @@
     <div class="panel-heading">회원가입</div>
     <div class="panel-body">
  		<form action="${contextPath}/memRegister.do" method="post">
+ 			<input type = "hidden" name = "memPassword" value=""/>
 			<table class="table table-bordered" style="text-align: center; border: 1px solid #ddddd";>
 				<tr>
 					<td style="width:110px; vertical-align: middle;">아이디</td>
@@ -91,7 +101,7 @@
 				</tr>
 				<tr>
 					<td colspan="3" style="text-align: left;">
-						<input type="submit" class="btn btn-primary btn-sm pull-right" value="등록"/>등록
+						<span id = "passMessage" style = "color : red"></span><input type="submit" class="btn btn-primary btn-sm pull-right" value="등록"/>
 					</td>
 				</tr>
 			</table>		
