@@ -26,13 +26,13 @@
         <li><a href="#">공지사항</a></li>
         <li><a href="boardMain.do">상품목록</a></li>
       </ul>
-      <c:if test="${empty mvo}">
+      <c:if test="${empty member}"> // <!-- 회원가입 안했을시 -->
 	      <ul class="nav navbar-nav navbar-right">
 	        <li><a href="${contextPath}/memJoin.do"><span class="glyphicon glyphicon-user" ></span>회원가입</a></li>
 	        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span>로그인</a></li>
 	      </ul>
       </c:if>
-      <c:if test="${!empty mvo}">
+      <c:if test="${!empty member}"> <!-- 회원가입 성공시 -->
 	      <ul class="nav navbar-nav navbar-right">
 	        <li><a href="#"><span class="glyphicon glyphicon-user"></span>회원관리</a></li>
 	        <li><a href="#"><span class="glyphicon glyphicon-user"></span>회원정보수정</a></li>

@@ -13,7 +13,13 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
-		function registerCheck() {
+	$(document).ready(function() {
+	    if(${!empty msgType}) {
+	        $("#messageType").attr("class", "modal-content panel-warning");
+	        $("#myMessage").modal("show");
+	    }
+	});
+	function registerCheck() {
 			var memId = $("#memId").val();
 			$.ajax({
 				url :" ${contextPath}/memRegisterCheck.do",
@@ -35,17 +41,18 @@
 				}
 			});	
 		}
+		
 	function passwordCheck() {
 		var memPassword1 = $("#memPassword1").val();
 		var memPassword2 = $("#memPassword2").val();
 		if(memPassword1 != memPassword2){ 
 			$("#passMessage").html("비밀번호가 서로 일치하지 않습니다.")
-		}else {
+		} else {
 			$("#passMessage").html("");
+			$("#memPassword").val(memPassword1)
 		}
 	}
 	</script>
-
 </head>
 <body>
  
@@ -57,7 +64,7 @@
     <div class="panel-heading">회원가입</div>
     <div class="panel-body">
  		<form action="${contextPath}/memRegister.do" method="post">
- 			<input type = "hidden" name = "memPassword" value=""/>
+ 			<input type = "hidden" id = "memPassword" name = "memPassword" value=""/>
 			<table class="table table-bordered" style="text-align: center; border: 1px solid #ddddd";>
 				<tr>
 					<td style="width:110px; vertical-align: middle;">아이디</td>
@@ -78,7 +85,7 @@
 				</tr>
 				<tr>
 					<td style="width:110px; vertical-align: middle;">나이</td>
-					<td colspan="2"><input id="memAge" name="memAge" class="form-control" type="text" maxlength="20" placeholder="나이를 입력하세요"/></td>
+					<td colspan="2"><input id="memAge" name="memAge" class="form-control" type="text" maxlength="20" placeholder="나이를 입력하세요" value="0"/></td>
 				</tr>
 				<tr>
 					<td style="width:110px; vertical-align: middle;">성별</td>
@@ -113,13 +120,32 @@
   <div class="modal-dialog">
 
     <!-- Modal content-->
-    <div id="checkType" class="modal-content">
+    <div id="checkType" class="modal-content panel-info">
       <div class="modal-header panel-heading">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title">메세지 확인</h4>
       </div>
       <div class="modal-body">
         <p id="checkMessage"></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- 실패 메시지 출력 -->
+<div id="myMessage" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div id = "messageType" class="modal-content panel-info">
+      <div class="modal-header panel-heading">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">${msgType}</h4>
+      </div>
+      <div class="modal-body">
+        <p>${msg}</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

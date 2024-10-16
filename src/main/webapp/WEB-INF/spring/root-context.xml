@@ -30,5 +30,10 @@ xsi:schemaLocation="http://mybatis.org/schema/mybatis-spring http://mybatis.org/
 		<bean class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		</bean>
+		
+		
 
 </beans>
+
+
+

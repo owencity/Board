@@ -39,7 +39,7 @@ public class MemberController {
 		if(member.getMemUserid() == null || member.getMemUserid().equals("") || 
 				member.getMemPassword() == null || member.getMemPassword().equals("") ||
 				member.getMemName() == null || member.getMemName().equals("") ||
-				member.getMemAge() == 0  || member.getMemAge() == null || 
+				member.getMemAge() == 0  || member.getMemName().equals("") || 
 				member.getMemEmail() == null || member.getMemEmail().equals("") || 				
 				member.getMemGender() == null || member.getMemGender().equals("") 
 				) {
