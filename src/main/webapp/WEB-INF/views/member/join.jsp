@@ -68,7 +68,7 @@
 			<table class="table table-bordered" style="text-align: center; border: 1px solid #ddddd";>
 				<tr>
 					<td style="width:110px; vertical-align: middle;">아이디</td>
-					<td><input id="memId" name="memId" class="form-control" type="text" maxlength="20" placeholder="아이디를 입력하세요"/></td>
+					<td><input id="memId" name="memUserid" class="form-control" type="text" maxlength="20" placeholder="아이디를 입력하세요"/></td>
 					<td style="width:110px;"><button type="button" class="btn btn-primary btm-sm" onclick="registerCheck()">중복확인</button></td>
 				</tr>
 				<tr>
