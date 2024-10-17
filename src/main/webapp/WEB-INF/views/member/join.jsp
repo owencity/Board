@@ -85,7 +85,7 @@
 				</tr>
 				<tr>
 					<td style="width:110px; vertical-align: middle;">나이</td>
-					<td colspan="2"><input id="memAge" name="memAge" class="form-control" type="text" maxlength="20" placeholder="나이를 입력하세요" value="0"/></td>
+					<td colspan="2"><input id="memAge" name="memAge" class="form-control" type="text" maxlength="20" placeholder="나이를 입력하세요" /></td>
 				</tr>
 				<tr>
 					<td style="width:110px; vertical-align: middle;">성별</td>
