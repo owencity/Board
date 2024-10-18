@@ -35,9 +35,12 @@ public class MemberController {
 	}
 	// 회원가입 처리
 	@RequestMapping("/memRegister.do")
-	public String memRegister(Member member, RedirectAttributes rttr, HttpSession session) {
+	public String memRegister(Member member, String memPassword1 , String memPassword2,
+			RedirectAttributes rttr, HttpSession session) {
+		
 		if(member.getMemUserid() == null || member.getMemUserid().equals("") || 
-				member.getMemPassword() == null || member.getMemPassword().equals("") ||
+				memPassword1 == null || memPassword1.equals("") ||
+				memPassword2 == null || memPassword2.equals("") ||
 				member.getMemName() == null || member.getMemName().equals("") ||
 				member.getMemAge() == null || member.getMemAge() == 0 ||
 				member.getMemEmail() == null || member.getMemEmail().equals("") || 				
@@ -47,6 +50,13 @@ public class MemberController {
 			rttr.addFlashAttribute("msg", "모든 내용을 입력하세요."); // 리다이렉트 시 메시지 한번만 보냄
 			return "redirect:/memJoin.do";
 		}
+		
+		if(!memPassword1.equals(memPassword2)) {
+			rttr.addFlashAttribute("msgType", "error"); // 리다이렉트 시 메시지 한번만 보냄
+			rttr.addFlashAttribute("msg", "비밀번호가 서로 다릅니다."); // 리다이렉트 시 메시지 한번만 보냄
+			return "redirect:/memJoin.do";
+		}
+		
 		member.setMemProfile(""); // null 과 공백의 의미가 다르므로 공백
 		int checkRegister = memberMapper.register(member);
 		if(checkRegister == 1) { // 회원가입 성공

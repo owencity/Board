@@ -52,6 +52,14 @@
 			$("#memPassword").val(memPassword1)
 		}
 	}
+	function goInsert() {
+		var memAge = $("#memAge").val();
+		if(memAge == null || memAge=="" || memAge == 0) {
+			alert("나이를 입력하세요")
+			return false;
+		}
+		document.frm.submit();
+	}
 	</script>
 </head>
 <body>
@@ -63,7 +71,7 @@
   <div class="panel panel-default">
     <div class="panel-heading">회원가입</div>
     <div class="panel-body">
- 		<form action="${contextPath}/memRegister.do" method="post">
+ 		<form name="frm" action="${contextPath}/memRegister.do" method="post">
  			<input type = "hidden" id = "memPassword" name = "memPassword" value=""/>
 			<table class="table table-bordered" style="text-align: center; border: 1px solid #ddddd";>
 				<tr>
@@ -108,7 +116,7 @@
 				</tr>
 				<tr>
 					<td colspan="3" style="text-align: left;">
-						<span id = "passMessage" style = "color : red"></span><input type="submit" class="btn btn-primary btn-sm pull-right" value="등록"/>
+						<span id = "passMessage" style = "color : red"></span><input type="button" class="btn btn-primary btn-sm pull-right" value="등록" onclick="goInsert()"/>
 					</td>
 				</tr>
 			</table>		
