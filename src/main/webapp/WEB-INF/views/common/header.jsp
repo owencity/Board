@@ -37,8 +37,8 @@
 	        <li><a href="#"><span class="glyphicon glyphicon-user"></span>회원관리</a></li>
 	        <li><a href="#"><span class="glyphicon glyphicon-user"></span>회원정보수정</a></li>
 	        <li><a href="#"><span class="glyphicon glyphicon-user"></span>프로필사진수정</a></li>
-	        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span>로그아웃</a></li>
-	      </ul>
+	        <li><a href="${contextPath}/memLogout.do"><span class="glyphicon glyphicon-log-in"></span>로그아웃</a></li>
+	      </ul> 
       </c:if>
       
    
