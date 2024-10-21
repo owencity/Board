@@ -69,12 +69,18 @@ public class MemberController {
 			rttr.addFlashAttribute("msgType", "실패 메시지"); 
 			rttr.addFlashAttribute("msg", "회원가입에 실패하였습니다.");
 			return "redirect:/memJoin.do";
-		}
+		}	
 	}
 		@RequestMapping("/memLogout.do") 
 		public String memLogout(HttpSession session) {
 			session.invalidate();
 			return "redirect:/";
+		}
+		
+		// 로그인 화면으로 이동
+		@RequestMapping("/memLoginForm.do")
+		public String memLogin() {
+			return "member/memLoginForm";
 		}
 	}
 

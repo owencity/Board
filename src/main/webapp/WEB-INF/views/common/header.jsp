@@ -29,7 +29,7 @@
       <c:if test="${empty member}"> // <!-- 회원가입 안했을시 -->
 	      <ul class="nav navbar-nav navbar-right">
 	        <li><a href="${contextPath}/memJoin.do"><span class="glyphicon glyphicon-user" ></span>회원가입</a></li>
-	        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span>로그인</a></li>
+	        <li><a href="${contextPath}/memLoginForm.do"><span class="glyphicon glyphicon-log-in"></span>로그인</a></li>
 	      </ul>
       </c:if>
       <c:if test="${!empty member}"> <!-- 회원가입 성공시 -->
