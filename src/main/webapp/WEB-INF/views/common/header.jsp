@@ -23,20 +23,24 @@
             <li><a href="#">목표하는 점</a></li>
           </ul>
         </li>
-        <li><a href="#">공지사항</a></li>
+        <li><a href="#">공지사항</a></li>	
         <li><a href="boardMain.do">상품목록</a></li>
       </ul>
-      <c:if test="${empty member}"> // <!-- 회원가입 안했을시 -->
+      <c:if test="${empty memberVo}"> // <!-- 로그인 성공시 -->
 	      <ul class="nav navbar-nav navbar-right">
 	        <li><a href="${contextPath}/memJoin.do"><span class="glyphicon glyphicon-user" ></span>회원가입</a></li>
 	        <li><a href="${contextPath}/memLoginForm.do"><span class="glyphicon glyphicon-log-in"></span>로그인</a></li>
 	      </ul>
       </c:if>
-      <c:if test="${!empty member}"> <!-- 회원가입 성공시 -->
+      <c:if test="${!empty memberVo}"> <!-- 회원가입 성공시, 로그인 성공시 -->
 	      <ul class="nav navbar-nav navbar-right">
-	        <li><a href="#"><span class="glyphicon glyphicon-user"></span>회원관리</a></li>
-	        <li><a href="#"><span class="glyphicon glyphicon-user"></span>회원정보수정</a></li>
-	        <li><a href="#"><span class="glyphicon glyphicon-user"></span>프로필사진수정</a></li>
+	        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">회원관리<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+	        	<li><a href="#"><span class="glyphicon glyphicon-user"></span>회원정보수정</a></li>
+	        	<li><a href="#"><span class="glyphicon glyphicon-user"></span>프로필사진수정</a></li>
+          </ul>
+        </li>
 	        <li><a href="${contextPath}/memLogout.do"><span class="glyphicon glyphicon-log-in"></span>로그아웃</a></li>
 	      </ul> 
       </c:if>
