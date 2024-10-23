@@ -26,7 +26,7 @@
         <li><a href="#">공지사항</a></li>	
         <li><a href="boardMain.do">상품목록</a></li>
       </ul>
-      <c:if test="${empty memberVo}"> // <!-- 로그인 성공시 -->
+      <c:if test="${empty memberVo}">
 	      <ul class="nav navbar-nav navbar-right">
 	        <li><a href="${contextPath}/memJoin.do"><span class="glyphicon glyphicon-user" ></span>회원가입</a></li>
 	        <li><a href="${contextPath}/memLoginForm.do"><span class="glyphicon glyphicon-log-in"></span>로그인</a></li>

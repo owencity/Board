@@ -92,8 +92,9 @@ public class MemberController {
 				rttr.addFlashAttribute("msg", "모든 내용을 입력해주세요");
 				return "redirect:/memLoginForm.do";
 			}
+			System.out.println(member.toString());
 			Member memberVo = memberMapper.memberLogin(member);
-			
+			System.out.println(memberVo.toString());
 			if(memberVo != null) {
 				// 로그인성공
 				rttr.addFlashAttribute("msgType", "성공 메시지");

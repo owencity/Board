@@ -9,8 +9,17 @@
         mem_tb1(mem_userid, mem_password, mem_name, mem_age, mem_gender, mem_email, mem_profile) 
         values (#{memUserid}, #{memPassword}, #{memName}, #{memAge}, #{memGender}, #{memEmail}, #{memProfile})
     </insert>
-    <select id="memberLogin" parameterType="kr.board.entity.Member" resultType="kr.board.entity.Member">
-    	select * from mem_tb1 
-    	where mem_userid = #{memUserid} and mem_password = #{memPassword}
+    <resultMap id="MemberResultMap" type="kr.board.entity.Member">
+    <result property="memId" column="mem_id"/>
+    <result property="memUserid" column="mem_userid"/>
+    <result property="memPassword" column="mem_password"/>
+    <result property="memName" column="mem_name"/>
+    <result property="memAge" column="mem_age"/>
+    <result property="memGender" column="mem_gender"/>
+    <result property="memEmail" column="mem_email"/>
+    <result property="memProfile" column="mem_profile"/>
+	</resultMap>
+    <select id="memberLogin" parameterType="kr.board.entity.Member" resultMap="MemberResultMap">
+  		 select * from mem_tb1 where mem_userid = #{memUserid} and mem_password = #{memPassword}
     </select>
 </mapper>
