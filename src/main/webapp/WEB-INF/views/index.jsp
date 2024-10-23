@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>메인화면</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -26,8 +26,35 @@
   <c:if test="${!empty memberVo}">
   <label>[사진]${sessionScope.memberVo.memName}님 방문을 환영합니다.</label>
   </c:if>
-  <p>In this example, the navigation bar is hidden on small screens and replaced by a button in the top right corner (try to re-size this window).
-  <p>Only when the button is clicked, the navigation bar will be displayed.</p>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+    	<image src="${contextPath}/resources/images/nest.jpg" style="width: 100%; height: 500px; "/>
+    </div>
+    <div class="panel-body">
+   	<ul class="nav nav-tabs">
+  <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
+  <li><a data-toggle="tab" href="#menu1">게시판</a></li>
+  <li><a data-toggle="tab" href="#menu2">공지사항</a></li>
+</ul>
+
+<div class="tab-content">
+  <div id="home" class="tab-pane fade in active">
+    <h3>HOME</h3>
+    <p>Some content.</p>
+  </div>
+	  <div id="menu1" class="tab-pane fade">
+	    <h3>게시판</h3>
+	    <p>Some content in menu 1.</p>
+	  </div>
+	  <div id="menu2" class="tab-pane fade">
+	    <h3>공지사항</h3>
+	    <p>Some content in menu 2.</p>
+	  </div>
+	</div>
+	    </div>
+    <div class="panel-footer">푸터</div>
+  </div>
+  
 </div>
 <!-- 실패 메시지 출력 -->
 <div id="myMessage" class="modal fade" role="dialog">

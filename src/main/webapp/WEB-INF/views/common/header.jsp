@@ -37,7 +37,7 @@
 	        <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">회원관리<span class="caret"></span></a>
           <ul class="dropdown-menu">
-	        	<li><a href="#"><span class="glyphicon glyphicon-user"></span>회원정보수정</a></li>
+	        	<li><a href="${contextPath}/memUpdateForm.do"><span class="glyphicon glyphicon-user"></span>회원정보수정</a></li>
 	        	<li><a href="#"><span class="glyphicon glyphicon-user"></span>프로필사진수정</a></li>
           </ul>
         </li>
