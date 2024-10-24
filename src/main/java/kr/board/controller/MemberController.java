@@ -113,5 +113,44 @@ public class MemberController {
 		public String memUpdateForm() {
 			return "member/memUpdateForm"; 
 		}
+		
+		//회원정보 수정
+		@RequestMapping
+		public String memUpdate(Member member, RedirectAttributes rttr
+				,HttpSession session , String memPassword1, String memPassword2) {
+			if(member.getMemUserid() == null || member.getMemUserid().equals("") || 
+					memPassword1 == null || memPassword1.equals("") ||
+					memPassword2 == null || memPassword2.equals("") ||
+					member.getMemName() == null || member.getMemName().equals("") ||
+					member.getMemAge() == null || member.getMemAge() == 0 ||
+					member.getMemEmail() == null || member.getMemEmail().equals("") || 				
+					member.getMemGender() == null || member.getMemGender().equals("") 
+					) {
+				rttr.addFlashAttribute("msgType", "error"); // 리다이렉트 시 메시지 한번만 보냄
+				rttr.addFlashAttribute("msg", "모든 내용을 입력하세요."); // 리다이렉트 시 메시지 한번만 보냄
+				return "redirect:/memUpdateForm.do";
+			}
+			
+			if(!memPassword1.equals(memPassword2)) {
+				rttr.addFlashAttribute("msgType", "error"); // 리다이렉트 시 메시지 한번만 보냄
+				rttr.addFlashAttribute("msg", "비밀번호가 서로 다릅니다."); // 리다이렉트 시 메시지 한번만 보냄
+				return "redirect:/memUpdateForm.do";
+			}
+
+			int checkRegister = memberMapper.memUpdate(member);
+			
+			if(checkRegister == 1) { 
+				//수정 성공
+				rttr.addFlashAttribute("msgType", "성공메시지"); 
+				rttr.addFlashAttribute("msg", "회원정보 수정에 성공했습니다.");
+				// 수정이 성공하면 => 로그인처리(계속 유지
+				session.setAttribute("member", member);
+				return "redirect:/";
+			} else {
+				rttr.addFlashAttribute("msgType", "실패 메시지"); 
+				rttr.addFlashAttribute("msg", "회원정보 수정에 실패하였습니다.");
+				return "redirect:/memUpdateForm.do";
+			}	
+		}
 	}
 

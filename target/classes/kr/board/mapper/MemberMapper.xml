@@ -22,4 +22,10 @@
     <select id="memberLogin" parameterType="kr.board.entity.Member" resultMap="MemberResultMap">
   		 select * from mem_tb1 where mem_userid = #{memUserid} and mem_password = #{memPassword}
     </select>
+    
+    <update id="memUpdate" parameterType="kr.board.entity.Member">
+    update mem_tb1 set mem_Password=#{memPassword} , memName = #{memName} 
+    		,mem_age = #{memAge} , mem_Gender = #{memGender} , mem_email = #{memEmail}
+    		where mem_userid = #{memUserid} 
+    </update>
 </mapper>
