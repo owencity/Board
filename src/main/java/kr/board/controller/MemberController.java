@@ -115,7 +115,7 @@ public class MemberController {
 		}
 		
 		//회원정보 수정
-		@RequestMapping
+		@RequestMapping("/memUpdate.do")
 		public String memUpdate(Member member, RedirectAttributes rttr
 				,HttpSession session , String memPassword1, String memPassword2) {
 			if(member.getMemUserid() == null || member.getMemUserid().equals("") || 
