@@ -23,12 +23,21 @@
 <body>
 <div class="container">
 <jsp:include page="common/header.jsp" />
+	<c:if test="${empty memberVo}">
+ 	<h2>Spring MVC</h2>
+  </c:if>
   <c:if test="${!empty memberVo}">
+  <c:if test="${memberVo.memProfile eq '' }">
+  	<img src="${contextPath}/resources/upload/yean.png" style="width:50px; height: 50px"/>
+  </c:if>
+  <c:if test="${memberVo.memProfile ne '' }">
+  	<img src="${contextPath}/resources/upload/${memberVo.memProfile}" style="width:50px; height: 50px"/>
+  </c:if>
   <label>[사진]${sessionScope.memberVo.memName}님 방문을 환영합니다.</label>
   </c:if>
   <div class="panel panel-default">
-    <div class="panel-heading">
-    	<img src="${contextPath}/resources/images/yena.png" style="width: 100%; height: 500px; "/>
+    <div>
+    	<img src="${contextPath}/resources/images/yena.png" style="width: 100%; height: 500px;0" />
     </div>
     <div class="panel-body">
    	<ul class="nav nav-tabs">
