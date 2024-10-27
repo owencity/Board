@@ -37,7 +37,7 @@
   </c:if>
   <div class="panel panel-default">
     <div>
-    	<img src="${contextPath}/resources/images/yena.png" style="width: 100%; height: 500px;0" />
+    	<img src="${contextPath}/resources/images/nest.jpg" style="width: 100%; height: 500px;0" />
     </div>
     <div class="panel-body">
    	<ul class="nav nav-tabs">

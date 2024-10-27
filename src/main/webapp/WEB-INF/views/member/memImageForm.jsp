@@ -31,7 +31,7 @@ $(document).ready(function() {
   <div class="panel panel-default">
     <div class="panel-heading">회원 사진등록 양식</div>
     <div class="panel-body">
-    	<form action="${contextPath}/memImageUpdate.do" method="post">
+    	<form action="${contextPath}/memImageUpdate.do" method="post" enctype="multipart/form-data">
 			<input type="hidden" name="memUserid" value="${memberVo.memUserid}"/>
 			<table class="table table-bordered" style="text-align: center; border: 1px solid #ddddd;">
 				<tr>
@@ -41,7 +41,7 @@ $(document).ready(function() {
 				<tr>
 					<td style="width:110px; vertical-align: middle;">사진 업로드</td>
 				<td colspan="2">
-					<span class="btn btn-defalut">
+					<span class="btn btn-default">
 					이미지를 업로드 하세요.<input type="file" name="memProfile" />
 					</span>		
 				</tr>
