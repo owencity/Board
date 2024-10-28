@@ -132,13 +132,13 @@ public class MemberController {
 					) {
 				rttr.addFlashAttribute("msgType", "error"); // 리다이렉트 시 메시지 한번만 보냄
 				rttr.addFlashAttribute("msg", "모든 내용을 입력하세요."); // 리다이렉트 시 메시지 한번만 보냄
-				return "redirect:/memUpdateForm.do";
+				return "redirect:/memUpdateForm";
 			}
 			
 			if(!memPassword1.equals(memPassword2)) {
 				rttr.addFlashAttribute("msgType", "error"); // 리다이렉트 시 메시지 한번만 보냄
 				rttr.addFlashAttribute("msg", "비밀번호가 서로 다릅니다."); // 리다이렉트 시 메시지 한번만 보냄
-				return "redirect:/memUpdateForm.do";
+				return "redirect:/memUpdateForm";
 			}
 
 			int checkRegister = memberMapper.memUpdate(member);
@@ -153,7 +153,7 @@ public class MemberController {
 			} else {
 				rttr.addFlashAttribute("msgType", "실패 메시지"); 
 				rttr.addFlashAttribute("msg", "회원정보 수정에 실패하였습니다.");
-				return "redirect:/memUpdateForm.do";
+				return "redirect:/memUpdateForm";
 			}	
 		}
 		
@@ -173,9 +173,10 @@ public class MemberController {
 				// 이미지 업로드
 				multi = new MultipartRequest(request, savePath, fileMaxSize, "UTF-8", new DefaultFileRenamePolicy());
 			} catch (Exception e) {
+				e.printStackTrace();
 				rttr.addFlashAttribute("msgType", "실패 메시지"); 
 				rttr.addFlashAttribute("msg", "파일의 크기는 10MB를 넘을수 없습니다.");
-				return "redirect:/memImageForm.do";
+				return "redirect:/memImageForm";
 			}
 			return "";
 		}
