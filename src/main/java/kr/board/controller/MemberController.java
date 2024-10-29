@@ -1,5 +1,7 @@
 package kr.board.controller;
 
+import java.io.File;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -178,6 +180,34 @@ public class MemberController {
 				rttr.addFlashAttribute("msg", "파일의 크기는 10MB를 넘을수 없습니다.");
 				return "redirect:/memImageForm";
 			}
+			// 데이터베이스
+			String memUserid = request.getParameter("memUserid");
+			String newProfile = "";
+			File file = multi.getFile("memProfile");
+			if(file != null) {
+				// 이미지 파일 여부 체크 -> 이미지 파일이 아니면 삭제
+				String ext = file.getName().substring(file.getName().lastIndexOf(".")+1);
+				ext = ext.toUpperCase();
+				if(ext.equals("PNG") || ext.equals("GIF") || ext.equals("JPG")) {
+					// 새로업로드된 이미지 , 현재 DB에 있는 이미지(old)
+					String oldProfile = memberMapper.getMember(memUserid).getMemProfile();
+					File oldFile = new File(savePath + "/" + oldProfile);
+					if(oldFile.exists()) {
+						oldFile.delete(); // 삭제
+					}
+					newProfile = file.getName();
+				} else {
+					if(file.exists()) {
+						file.delete();
+					}
+					rttr.addFlashAttribute("msgType", "실패 메시지"); 
+					rttr.addFlashAttribute("msg", "이 이미지 파일만 업로드 가능합니다.");
+					return "redirect:/memImageForm";
+				}
+			}
+			Member member = new Member();
+			member.setMemUserid(memUserid);
+			member.setMemProfile(newProfile);
 			return "";
 		}
 	}

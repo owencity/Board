@@ -28,4 +28,12 @@
     		,mem_age = #{memAge} , mem_Gender = #{memGender} , mem_email = #{memEmail}
     		where mem_userid = #{memUserid} 
     </update>
+    
+    <select id = "getMember" resultType="kr.board.entity.Member">
+    	select * from mem_tb1 where memId = #{memId}
+    </select>
+    
+    <update id="memProfileUpate" parameterType="kr.board.entity.Member">
+     update mem_tb1 set memProfile=#{memProfile} where mem_userid=#{memUserid};
+    </update>
 </mapper>
